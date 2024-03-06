@@ -1,0 +1,21 @@
+<%- include('../partials/header.ejs') %>
+<div class="inner-container">
+  <%- include('../partials/errorMessage.ejs') %> <%-
+  include('../partials/greeting.ejs') %>
+
+  <h2 class="page-header"><%= conductor.name %> (Conductor)</h2>
+  <div class="text-xl">Driver: <%= driver.name %></div>
+
+  <div class="flex justify-end">
+    <a
+      class="btn btn-primary mr-3"
+      href="/conductors/<%= conductor.idconductor %>/edit"
+      ><img src="../images/mode_edit_black_36dp.svg" alt="edit" /></a
+    >
+    <%- include('../partials/deleteForm', { url:
+    `/conductors/${conductor.idconductor}` }) %>
+    <a class="btn btn-primary ml-3" href="/drivers/<%= conductor.iddriver %>"
+      >View Driver</a
+    >
+  </div>
+</div>

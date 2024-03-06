@@ -1,0 +1,58 @@
+<%- include('../partials/header.ejs') %>
+<div class="inner-container">
+  <%- include('../partials/errorMessage.ejs') %>
+  <%- include('../partials/greeting.ejs') %>
+  
+  
+  <h2 class="page-header">Book Tickets</h2>
+  <div class="details-grid">
+    <div class="details-label">Transaction ID: <%= tid %></div>
+  </div>
+  <br>
+  <div class="time"><%= time %></div>
+  <br>
+  <form action="/transacts/add" method="POST">
+    <div class="form-row">
+      <div class="form-item">
+        <label>Passanger</label>
+        <select name="passanger" required>
+          <option selected label="select_Passanger"></option>
+          <% passangers.forEach(passanger => { %>
+              <option label="<%= passanger.name %>" value="<%= passanger.idpassanger %>">
+          <% }) %>
+        </select>
+      </div> 
+
+      <div class="form-item">
+        <label>Bus</label>
+        <select name="bus" required>
+          <option selected label="select_bus"></option>
+          <% buses.forEach(bus => { %>
+              <option label="<%= bus.name %>" value="<%= bus.idbus %>">
+          <% }) %>
+        </select>
+      </div> 
+    </div>
+  
+    <div class="form-row">
+      <div class="form-item">
+        <label>No of Tickets</label>
+        <input type="number" name="noofticket" required>
+
+        <input type="hidden" name="tid" value="<%= tid %> ">
+        <input type="hidden" name="time" value="<%= time %> ">
+      </div>
+    </div>
+    
+    <div class="form-row form-row-end btn-row">
+      <a class="btn btn-danger" href="/buses">
+        <img src="../images/highlight_off_black_36dp.svg" alt="cancel" />
+      </a>
+      <button class="btn btn-primary" type="submit">
+        <img src="../images/published_with_changes_black_36dp.svg" alt="create" />
+      </button>
+    </div>
+  </form>
+
+</div>
+
